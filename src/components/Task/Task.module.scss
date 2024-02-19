@@ -1,0 +1,50 @@
+.task {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #6c63ff80;
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  gap: 20px;
+  overflow-x: hidden;
+  position: relative;
+  .control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    background-color: hsl(240 15% 10%);
+    @media (min-width: 768px) {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    @media (max-width: 424px) {
+      right: 0;
+    }
+  }
+  .action {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 18px;
+    &:first-child {
+      &:hover {
+        color: #6c63ff80;
+      }
+    }
+    &:last-child {
+      &:hover {
+        color: #e50000;
+      }
+    }
+  }
+  &:hover {
+    .control {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

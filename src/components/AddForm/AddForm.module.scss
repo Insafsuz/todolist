@@ -1,0 +1,17 @@
+.form {
+  .title {
+    font-size: calc(22px / 16px) + rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 40px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .button {
+    width: 100px;
+  }
+}

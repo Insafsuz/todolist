@@ -1,0 +1,47 @@
+.modal {
+  width: 100%;
+  height: 100vh;
+  background-color: hwb(240 9% 89% / 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .content {
+    position: relative;
+    width: 500px;
+    background-color: hsl(240 15% 10%);
+    border: 1px solid hsl(245 50% 50%);
+    border-radius: 10px;
+    box-shadow: 0 -16px 40px hsl(240 20% 4%), 0 1em 3em hsl(245 50% 50% / 0.2);
+    padding: 25px 30px;
+    margin: 0 20px;
+    @media (max-width: 550px) {
+      padding: 15px;
+      margin: 0 10px;
+    }
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: hsl(10, 82%, 45%);
+    box-shadow: 1px 1px 10px hsl(10, 82%, 45%);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 20px;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 1px 1px 15px hsl(10, 82%, 45%);
+    }
+  }
+}

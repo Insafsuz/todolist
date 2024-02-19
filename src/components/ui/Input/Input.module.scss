@@ -1,0 +1,41 @@
+.wrapper {
+  position: relative;
+  .input {
+    width: 100%;
+    height: 47px;
+    border-radius: 5px;
+    padding: 0.35em 17px;
+    font-size: calc(17px / 16px) + rem;
+    background-color: hsl(245 20% 4%);
+    caret-color: hsl(245 50% 50%);
+    color: #d7d7ea;
+    transition: all 0.2s ease;
+    &:focus,
+    &:valid {
+      outline: none;
+      box-shadow: 0 0 0 5px hsl(240 15% 10%), 0 0 0 10px hsl(245 50% 50% / 0.8);
+    }
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+  .label {
+    text-transform: uppercase;
+    font-size: calc(17px / 16px) + rem;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 3px 7px;
+    transition: all 0.2s ease;
+  }
+}
+
+.input:focus + .label,
+.input:valid + .label {
+  transform: translateY(-48px);
+  background-color: hsl(240 15% 10%);
+  color: hsl(245 50% 50% / 0.8);
+}

@@ -1,17 +1,40 @@
-import { FC } from 'react'
+import { FC, FormEvent, useState } from 'react'
 import Button from '../ui/Button/Button'
 import Input from '../ui/Input/Input'
 import styles from './AddForm.module.scss'
 
 interface AddFormProps {
   setActive: (active: boolean) => void
+  addTask: (task: ITask) => void
 }
 
-const AddForm: FC<AddFormProps> = ({ setActive }) => {
+const AddForm: FC<AddFormProps> = ({ setActive, addTask }) => {
+  const [title, setTitle] = useState('')
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (title) {
+      addTask({
+        id: crypto.randomUUID(),
+        title,
+        checked: false,
+        status: 'incomplete',
+      })
+    }
+    setTitle('')
+    setActive(false)
+    e.preventDefault()
+  }
+
   return (
-    <form className={styles.form}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <h2 className={styles.title}>New task</h2>
-      <Input type='text' id='task' placeholder='New task...' />
+      <Input
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        type='text'
+        id='task'
+        placeholder='New task...'
+      />
       <div className={styles.wrapper}>
         <Button
           onClick={() => setActive(false)}

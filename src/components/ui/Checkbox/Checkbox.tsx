@@ -1,11 +1,16 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, ReactNode } from 'react'
 import styles from './Checkbox.module.scss'
 
-const Checkbox: FC<PropsWithChildren> = ({ children }) => {
+interface CheckboxProps {
+  children: ReactNode
+  id: string
+}
+
+const Checkbox: FC<CheckboxProps> = ({ children, id }) => {
   return (
     <div className={styles.wrapper}>
-      <input className={styles.checkbox} type='checkbox' id='checkbox' />
-      <label className={styles.label} htmlFor='checkbox'>
+      <input className={styles.checkbox} type='checkbox' id={id} />
+      <label className={styles.label} htmlFor={id}>
         {children}
       </label>
     </div>

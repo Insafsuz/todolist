@@ -9,6 +9,15 @@ import styles from './index.module.scss'
 
 const App = () => {
   const [active, setActive] = useState(false)
+  const [tasks, setTasks] = useState<ITask[]>([])
+
+  const addTask = (task: ITask) => {
+    setTasks(prev => [...prev, task])
+  }
+
+  const deleteTask = (id: string) => {
+    setTasks(prev => [...prev].filter(task => task.id !== id))
+  }
 
   return (
     <div className={styles.container}>
@@ -36,9 +45,9 @@ const App = () => {
           </Button>
         </div>
       </div>
-      <TaskList />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
       <Modal active={active} setActive={setActive}>
-        <AddForm setActive={setActive} />
+        <AddForm setActive={setActive} addTask={addTask} />
       </Modal>
     </div>
   )

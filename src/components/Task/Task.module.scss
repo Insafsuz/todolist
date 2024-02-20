@@ -30,13 +30,23 @@
     cursor: pointer;
     transition: color 0.3s ease;
     font-size: 18px;
-    &:first-child {
-      &:hover {
-        color: #6c63ff80;
+    @media (min-width: 767px) {
+      &:first-child {
+        &:hover {
+          color: #6c63ff80;
+        }
+      }
+      &:last-child {
+        &:hover {
+          color: #e50000;
+        }
       }
     }
-    &:last-child {
-      &:hover {
+    @media (max-width: 767px) {
+      &:first-child {
+        color: #6c63ff80;
+      }
+      &:last-child {
         color: #e50000;
       }
     }

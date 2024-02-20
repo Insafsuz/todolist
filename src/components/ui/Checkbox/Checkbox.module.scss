@@ -1,22 +1,3 @@
-.wrapper {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-}
-
-.label {
-  user-select: none;
-  font-size: calc(18px / 16px) + rem;
-  max-width: 445px;
-  cursor: pointer;
-  padding-right: 60px;
-  &.checked {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-}
-
 .checkbox {
   display: block;
   position: relative;

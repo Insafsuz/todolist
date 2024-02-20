@@ -9,7 +9,9 @@ import styles from './index.module.scss'
 
 const App = () => {
   const [active, setActive] = useState(false)
-  const [tasks, setTasks] = useState<ITask[]>([])
+  const [tasks, setTasks] = useState<ITask[]>([
+    { id: '1', title: 'local data task', checked: false, status: 'incomplete' },
+  ])
 
   const addTask = (task: ITask) => {
     setTasks(prev => [...prev, task])
@@ -27,6 +29,19 @@ const App = () => {
               ...task,
               checked: !task.checked,
               status: task.checked ? 'incomplete' : 'complete',
+            }
+          : task
+      )
+    )
+  }
+
+  const editTask = (id: string, editedTitle: string) => {
+    setTasks(prev =>
+      [...prev].map(task =>
+        task.id === id
+          ? {
+              ...task,
+              title: editedTitle,
             }
           : task
       )
@@ -59,7 +74,12 @@ const App = () => {
           </Button>
         </div>
       </div>
-      <TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleTask={toggleTask}
+        editTask={editTask}
+      />
       <Modal active={active} setActive={setActive}>
         <AddForm setActive={setActive} addTask={addTask} />
       </Modal>

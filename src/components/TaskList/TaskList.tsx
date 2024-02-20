@@ -6,9 +6,15 @@ interface TaskListProps {
   tasks: ITask[]
   deleteTask: (id: string) => void
   toggleTask: (id: string) => void
+  editTask: (id: string, editedTitle: string) => void
 }
 
-const TaskList: FC<TaskListProps> = ({ tasks, deleteTask, toggleTask }) => {
+const TaskList: FC<TaskListProps> = ({
+  tasks,
+  deleteTask,
+  toggleTask,
+  editTask,
+}) => {
   return (
     <ul className={styles.list}>
       {tasks.map(task => (
@@ -17,6 +23,7 @@ const TaskList: FC<TaskListProps> = ({ tasks, deleteTask, toggleTask }) => {
           key={task.id}
           deleteTask={deleteTask}
           toggleTask={toggleTask}
+          editTask={editTask}
         />
       ))}
     </ul>

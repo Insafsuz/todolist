@@ -12,6 +12,8 @@ const App = () => {
   const [tasks, setTasks] = useState<ITask[]>([
     { id: '1', title: 'local data task', checked: false, status: 'incomplete' },
   ])
+  const [filterStatus, setFilterStatus] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const addTask = (task: ITask) => {
     setTasks(prev => [...prev, task])
@@ -48,12 +50,20 @@ const App = () => {
     )
   }
 
+  const filteredTasks = tasks
+    .filter(task =>
+      filterStatus === 'all' ? true : task.status === filterStatus
+    )
+    .filter(task => task.title.toLowerCase().includes(searchTerm.toLowerCase()))
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Todo list</h1>
       <div className={styles.header}>
         <div className={styles.item}>
           <Select
+            value={filterStatus}
+            onChange={e => setFilterStatus(e.target.value)}
             options={[
               { value: 'all', name: 'All' },
               { value: 'complete', name: 'Complete' },
@@ -62,7 +72,13 @@ const App = () => {
           />
         </div>
         <div className={styles.item}>
-          <Input type='text' id='search' placeholder='Search task' />
+          <Input
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            type='text'
+            id='search'
+            placeholder='Search task'
+          />
         </div>
         <div className={styles.item}>
           <Button
@@ -75,7 +91,7 @@ const App = () => {
         </div>
       </div>
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         deleteTask={deleteTask}
         toggleTask={toggleTask}
         editTask={editTask}

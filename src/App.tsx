@@ -19,6 +19,20 @@ const App = () => {
     setTasks(prev => [...prev].filter(task => task.id !== id))
   }
 
+  const toggleTask = (id: string) => {
+    setTasks(prev =>
+      [...prev].map(task =>
+        task.id === id
+          ? {
+              ...task,
+              checked: !task.checked,
+              status: task.checked ? 'incomplete' : 'complete',
+            }
+          : task
+      )
+    )
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Todo list</h1>
@@ -45,7 +59,7 @@ const App = () => {
           </Button>
         </div>
       </div>
-      <TaskList tasks={tasks} deleteTask={deleteTask} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
       <Modal active={active} setActive={setActive}>
         <AddForm setActive={setActive} addTask={addTask} />
       </Modal>

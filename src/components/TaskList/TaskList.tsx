@@ -5,13 +5,19 @@ import styles from './TaskList.module.scss'
 interface TaskListProps {
   tasks: ITask[]
   deleteTask: (id: string) => void
+  toggleTask: (id: string) => void
 }
 
-const TaskList: FC<TaskListProps> = ({ tasks, deleteTask }) => {
+const TaskList: FC<TaskListProps> = ({ tasks, deleteTask, toggleTask }) => {
   return (
     <ul className={styles.list}>
       {tasks.map(task => (
-        <Task task={task} key={task.id} deleteTask={deleteTask} />
+        <Task
+          task={task}
+          key={task.id}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+        />
       ))}
     </ul>
   )

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AddForm from './components/AddForm/AddForm'
 import TaskList from './components/TaskList/TaskList'
 import Button from './components/ui/Button/Button'
@@ -9,11 +9,20 @@ import styles from './index.module.scss'
 
 const App = () => {
   const [active, setActive] = useState(false)
-  const [tasks, setTasks] = useState<ITask[]>([
-    { id: '1', title: 'local data task', checked: false, status: 'incomplete' },
-  ])
+  const [tasks, setTasks] = useState<ITask[]>([])
   const [filterStatus, setFilterStatus] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
+
+  const storedTasks = localStorage.getItem('tasks')
+  useEffect(() => {
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
   const addTask = (task: ITask) => {
     setTasks(prev => [...prev, task])

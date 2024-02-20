@@ -3,3 +3,14 @@
   margin-top: 40px;
   max-width: 550px;
 }
+
+.empty {
+  background-color: hsl(240, 14%, 19%);
+  width: 95px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px auto;
+  border-radius: 5px;
+}

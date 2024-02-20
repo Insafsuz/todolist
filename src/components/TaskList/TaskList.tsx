@@ -17,15 +17,19 @@ const TaskList: FC<TaskListProps> = ({
 }) => {
   return (
     <ul className={styles.list}>
-      {tasks.map(task => (
-        <Task
-          task={task}
-          key={task.id}
-          deleteTask={deleteTask}
-          toggleTask={toggleTask}
-          editTask={editTask}
-        />
-      ))}
+      {tasks.length > 0 ? (
+        tasks.map(task => (
+          <Task
+            task={task}
+            key={task.id}
+            deleteTask={deleteTask}
+            toggleTask={toggleTask}
+            editTask={editTask}
+          />
+        ))
+      ) : (
+        <p className={styles.empty}>No todos</p>
+      )}
     </ul>
   )
 }

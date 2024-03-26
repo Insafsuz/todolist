@@ -47,12 +47,16 @@ const Task: FC<TaskProps> = ({ task, deleteTask, toggleTask, editTask }) => {
             >
               {task.title}
             </label>
-            <div className={styles.control}>
-              <SlPencil onClick={showEdit} className={styles.action} />
-              <GoTrash
-                onClick={() => deleteTask(task.id)}
-                className={styles.action}
-              />
+            <div className={styles.default}>
+              <button className={styles.control} type='button'>
+                <SlPencil onClick={showEdit} className={styles.action} />
+              </button>
+              <button className={styles.control} type='button'>
+                <GoTrash
+                  onClick={() => deleteTask(task.id)}
+                  className={styles.action}
+                />
+              </button>
             </div>
           </>
         ) : (

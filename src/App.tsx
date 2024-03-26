@@ -5,7 +5,6 @@ import Button from './components/ui/Button/Button'
 import Input from './components/ui/Input/Input'
 import Modal from './components/ui/Modal/Modal'
 import Select from './components/ui/Select/Select'
-import styles from './index.module.scss'
 
 const App = () => {
   const [active, setActive] = useState(false)
@@ -14,6 +13,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
 
   const storedTasks = localStorage.getItem('tasks')
+
   useEffect(() => {
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks))
@@ -66,10 +66,10 @@ const App = () => {
     .filter(task => task.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Todo list</h1>
-      <div className={styles.header}>
-        <div className={styles.item}>
+    <div className='container'>
+      <h1 className='title'>Todo list</h1>
+      <div className='header'>
+        <div className='item'>
           <Select
             value={filterStatus}
             onChange={e => setFilterStatus(e.target.value)}
@@ -80,7 +80,7 @@ const App = () => {
             ]}
           />
         </div>
-        <div className={styles.item}>
+        <div className='item'>
           <Input
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
@@ -89,7 +89,7 @@ const App = () => {
             placeholder='Search task'
           />
         </div>
-        <div className={styles.item}>
+        <div className='item'>
           <Button
             onClick={() => setActive(true)}
             type='button'

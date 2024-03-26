@@ -1,3 +1,5 @@
+@import '../../../styles/mixins.scss';
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -15,8 +17,15 @@
     border: 1px solid hsl(240 50% 50%);
     background-color: hsl(240 50% 50%);
     transition: background-color 0.3s ease;
-    &:hover {
-      background-color: hsl(240, 54%, 37%);
+    @media (hover: hover) {
+      &:hover {
+        background-color: hsl(240, 54%, 37%);
+      }
+    }
+    @media (hover: none) {
+      &:active {
+        background-color: hsl(240, 54%, 37%);
+      }
     }
   }
   &.secondary {
@@ -24,7 +33,7 @@
     border: 1px solid hsl(240 50% 50%);
     color: hsl(240 50% 50%);
     transition: background-color 0.3s ease, color 0.3s ease;
-    &:hover {
+    @include hover {
       background-color: hsl(240 50% 50%);
       color: #d7d7ea;
     }

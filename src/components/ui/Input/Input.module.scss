@@ -3,10 +3,10 @@
   .input {
     border: 0;
     width: 100%;
-    height: 47px;
-    border-radius: 5px;
-    padding: 5px 17px;
-    font-size: calc(17px / 16px) + rem;
+    height: 2.9375rem;
+    border-radius: 0.3125rem;
+    padding: 0.3125rem 1.0625rem;
+    font-size: 1.0625rem;
     background-color: hsl(245 20% 4%);
     caret-color: hsl(245 50% 50%);
     color: #d7d7ea;
@@ -22,21 +22,21 @@
   }
   .label {
     text-transform: uppercase;
-    font-size: calc(17px / 16px) + rem;
+    font-size: 1.0625rem;
     pointer-events: none;
     letter-spacing: 0.05em;
     position: absolute;
-    left: 10px;
+    left: 0.625rem;
     top: 50%;
     transform: translateY(-50%);
-    padding: 3px 7px;
+    padding: 0.1875rem 0.4375rem;
     transition: all 0.2s ease;
   }
 }
 
 .input:focus + .label,
 .input:valid + .label {
-  transform: translateY(-48px);
+  transform: translateY(-3rem);
   background-color: hsl(240 15% 10%);
   color: hsl(245 50% 50% / 0.8);
 }

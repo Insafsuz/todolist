@@ -12,35 +12,35 @@
   justify-content: center;
   .content {
     position: relative;
-    width: 500px;
+    width: 31.25rem;
     background-color: hsl(240 15% 10%);
     border: 1px solid hsl(245 50% 50%);
-    border-radius: 10px;
+    border-radius: 0.625rem;
     box-shadow: 0 -16px 40px hsl(240 20% 4%), 0 1em 3em hsl(245 50% 50% / 0.2);
-    padding: 25px 30px;
-    margin: 0 20px;
+    padding: 1.5625rem 1.875rem;
+    margin: 0 1.25em;
     @media (max-width: 550px) {
-      padding: 15px;
-      margin: 0 10px;
+      padding: 0.9375rem;
+      margin: 0 0.625rem;
     }
   }
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     background-color: hsl(10, 82%, 45%);
     box-shadow: 1px 1px 10px hsl(10, 82%, 45%);
     color: #fff;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     border: 0;
     padding-inline: 0;
     cursor: pointer;
     position: absolute;
-    top: -40px;
+    top: -2.5rem;
     right: 0;
-    font-size: 20px;
+    font-size: 1.25rem;
     transition: box-shadow 0.3s ease;
     &:hover {
       box-shadow: 1px 1px 15px hsl(10, 82%, 45%);

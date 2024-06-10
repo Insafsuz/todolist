@@ -1,18 +1,13 @@
-import { ChangeEvent, FC } from 'react'
+import { FC, InputHTMLAttributes } from 'react'
 import styles from './Input.module.scss'
 
-interface InputProps {
-  value?: string
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  placeholder: string
-  type: 'text' | 'password' | 'email'
-  id: string
-}
-
-const Input: FC<InputProps> = ({ placeholder, ...props }) => {
+const Input: FC<InputHTMLAttributes<HTMLInputElement>> = ({
+  placeholder,
+  ...props
+}) => {
   return (
     <div className={styles.wrapper}>
-      <input className={styles.input} {...props} required autoComplete='off' />
+      <input className={styles.input} {...props} autoComplete='off' required />
       <label className={styles.label} htmlFor={props.id}>
         {placeholder}
       </label>

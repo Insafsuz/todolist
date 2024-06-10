@@ -1,24 +1,27 @@
-import { FC, ReactNode } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import { IoClose } from 'react-icons/io5'
 import styles from './Modal.module.scss'
 
 interface ModalProps {
-  active: boolean
-  setActive: (active: boolean) => void
-  children: ReactNode
+  isModalVisible: boolean
+  setIsModalVisible: (isModalVisible: boolean) => void
 }
 
-const Modal: FC<ModalProps> = ({ active, setActive, children }) => {
+const Modal: FC<PropsWithChildren<ModalProps>> = ({
+  isModalVisible,
+  setIsModalVisible,
+  children,
+}) => {
+  const closeModal = () => {
+    setIsModalVisible(false)
+  }
+
   return (
-    active && (
-      <div className={styles.modal} onClick={() => setActive(false)}>
+    isModalVisible && (
+      <div className={styles.modal} onClick={closeModal}>
         <div className={styles.content} onClick={e => e.stopPropagation()}>
           {children}
-          <button
-            className={styles.btn}
-            onClick={() => setActive(false)}
-            type='button'
-          >
+          <button className={styles.btn} onClick={closeModal} type='button'>
             <IoClose />
           </button>
         </div>

@@ -1,6 +1,4 @@
-@import '../../../styles/mixins.scss';
-
-.btn {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +21,7 @@
       }
     }
     @media (hover: none) {
-      &:active {
+      &:ismodalvisible {
         background-color: hsl(240, 54%, 37%);
       }
     }

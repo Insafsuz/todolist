@@ -7,7 +7,7 @@ import Modal from './components/ui/Modal/Modal'
 import Select from './components/ui/Select/Select'
 
 const App = () => {
-  const [active, setActive] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const [tasks, setTasks] = useState<ITask[]>([])
   const [filterStatus, setFilterStatus] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
@@ -71,29 +71,30 @@ const App = () => {
       <div className='header'>
         <div className='item'>
           <Select
-            value={filterStatus}
-            onChange={e => setFilterStatus(e.target.value)}
             options={[
               { value: 'all', name: 'All' },
               { value: 'complete', name: 'Complete' },
               { value: 'incomplete', name: 'Incomplete' },
             ]}
+            value={filterStatus}
+            onChange={e => setFilterStatus(e.target.value)}
           />
         </div>
+
         <div className='item'>
           <Input
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
             type='text'
             id='search'
             placeholder='Search task'
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
           />
         </div>
         <div className='item'>
           <Button
-            onClick={() => setActive(true)}
             type='button'
             variant='primary'
+            onClick={() => setIsModalVisible(true)}
           >
             Add task
           </Button>
@@ -105,8 +106,11 @@ const App = () => {
         toggleTask={toggleTask}
         editTask={editTask}
       />
-      <Modal active={active} setActive={setActive}>
-        <AddForm setActive={setActive} addTask={addTask} />
+      <Modal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      >
+        <AddForm setIsModalVisible={setIsModalVisible} addTask={addTask} />
       </Modal>
     </div>
   )

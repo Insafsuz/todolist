@@ -1,9 +1,8 @@
 import { FC, FormEvent, useState } from 'react'
-import { GoTrash } from 'react-icons/go'
-import { SlPencil } from 'react-icons/sl'
-
 import { BsCheckLg } from 'react-icons/bs'
+import { GoTrash } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
+import { SlPencil } from 'react-icons/sl'
 import Checkbox from '../ui/Checkbox/Checkbox'
 import styles from './Task.module.scss'
 
@@ -16,7 +15,7 @@ interface TaskProps {
 
 const Task: FC<TaskProps> = ({ task, deleteTask, toggleTask, editTask }) => {
   const [isChecked, setIsChecked] = useState(task.checked)
-  const [editing, setEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
   const [editedTitle, setEditedTitle] = useState(task.title)
 
   const toggleCheckbox = () => {
@@ -25,57 +24,60 @@ const Task: FC<TaskProps> = ({ task, deleteTask, toggleTask, editTask }) => {
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    editTask(task.id, editedTitle)
-    setEditing(false)
     e.preventDefault()
-  }
-
-  const showEdit = () => {
-    setEditing(true)
-    setEditedTitle(task.title)
+    editTask(task.id, editedTitle)
+    setIsEditing(false)
   }
 
   return (
     <li className={styles.task}>
       <div className={styles.wrapper}>
-        <Checkbox checked={isChecked} onChange={toggleCheckbox} id={task.id} />
-        {!editing ? (
+        <Checkbox id={task.id} checked={isChecked} onChange={toggleCheckbox} />
+        {!isEditing ? (
           <>
             <label
-              className={`${styles.label} ${isChecked ? styles.checked : null}`}
               htmlFor={task.id}
+              className={`${styles.label} ${isChecked ? styles.checked : null}`}
             >
               {task.title}
             </label>
             <div className={styles.default}>
-              <button className={styles.control} type='button'>
-                <SlPencil onClick={showEdit} className={styles.action} />
+              <button
+                type='button'
+                className={styles.action}
+                onClick={() => setIsEditing(true)}
+              >
+                <SlPencil />
               </button>
-              <button className={styles.control} type='button'>
-                <GoTrash
-                  onClick={() => deleteTask(task.id)}
-                  className={styles.action}
-                />
+              <button
+                type='button'
+                className={styles.action}
+                onClick={() => deleteTask(task.id)}
+              >
+                <GoTrash />
               </button>
             </div>
           </>
         ) : (
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <input
-              className={styles.input}
-              value={editedTitle}
-              onChange={e => setEditedTitle(e.target.value)}
               type='text'
-              name='editing title'
+              className={styles.input}
               autoFocus
               autoComplete='off'
+              value={editedTitle}
+              onChange={e => setEditedTitle(e.target.value)}
             />
             <div className={styles.edit}>
-              <button className={styles.action} type='submit'>
+              <button type='submit' className={styles.action}>
                 <BsCheckLg />
               </button>
-              <button className={styles.action} type='button'>
-                <IoMdClose onClick={() => setEditing(false)} />
+              <button
+                type='button'
+                className={styles.action}
+                onClick={() => setIsEditing(false)}
+              >
+                <IoMdClose />
               </button>
             </div>
           </form>

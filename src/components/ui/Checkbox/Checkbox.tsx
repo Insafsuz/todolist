@@ -1,13 +1,7 @@
-import { FC } from 'react'
+import { FC, InputHTMLAttributes } from 'react'
 import styles from './Checkbox.module.scss'
 
-interface CheckboxProps {
-  id: string
-  checked: boolean
-  onChange: () => void
-}
-
-const Checkbox: FC<CheckboxProps> = ({ ...props }) => {
+const Checkbox: FC<InputHTMLAttributes<HTMLInputElement>> = ({ ...props }) => {
   return <input className={styles.checkbox} type='checkbox' {...props} />
 }
 

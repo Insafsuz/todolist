@@ -5,7 +5,7 @@
     }
   }
   @media (hover: none) {
-    &:active {
+    &:ismodalvisible {
       @content;
     }
   }

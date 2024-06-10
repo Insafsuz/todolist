@@ -1,29 +1,18 @@
-import { FC, MouseEvent, ReactNode } from 'react'
+import { ButtonHTMLAttributes, FC } from 'react'
 import styles from './Button.module.scss'
 
-interface ButtonProps {
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-  type: 'button' | 'submit'
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary'
-  children: ReactNode
-  className?: string
 }
 
-const Button: FC<ButtonProps> = ({
-  children,
-  variant,
-  className,
-  ...props
-}) => {
+const Button: FC<ButtonProps> = ({ variant, ...props }) => {
   return (
     <button
-      {...props}
-      className={`${styles.btn} ${className} ${
+      className={`${styles.button} ${
         variant === 'primary' ? styles.primary : styles.secondary
       }`}
-    >
-      {children}
-    </button>
+      {...props}
+    />
   )
 }
 

@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from 'react'
 import { IoClose } from 'react-icons/io5'
 import styles from './Modal.module.scss'
 
-interface ModalProps {
+type ModalProps = {
   isModalVisible: boolean
   setIsModalVisible: (isModalVisible: boolean) => void
 }

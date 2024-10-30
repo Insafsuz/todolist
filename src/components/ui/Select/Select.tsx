@@ -1,10 +1,11 @@
 import { ChangeEvent, FC } from 'react'
+import { TOption } from '../../../types'
 import styles from './Select.module.scss'
 
-interface SelectProps {
+type SelectProps = {
   value?: string
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void
-  options: IOption[]
+  options: TOption[]
 }
 
 const Select: FC<SelectProps> = ({ options, ...props }) => {

@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, FC } from 'react'
 import styles from './Button.module.scss'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: 'primary' | 'secondary'
 }
 

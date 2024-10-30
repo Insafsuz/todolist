@@ -1,9 +1,10 @@
 import { FC } from 'react'
+import { TTask } from '../../types'
 import Task from '../Task/Task'
 import styles from './TaskList.module.scss'
 
-interface TaskListProps {
-  tasks: ITask[]
+type TaskListProps = {
+  tasks: TTask[]
   deleteTask: (id: string) => void
   toggleTask: (id: string) => void
   editTask: (id: string, editedTitle: string) => void

@@ -3,12 +3,12 @@ import { BsCheckLg } from 'react-icons/bs'
 import { GoTrash } from 'react-icons/go'
 import { IoMdClose } from 'react-icons/io'
 import { SlPencil } from 'react-icons/sl'
-import { TTask } from '../../types'
+import { Task as TaskType } from '../../types'
 import Checkbox from '../ui/Checkbox/Checkbox'
 import styles from './Task.module.scss'
 
 type TaskProps = {
-  task: TTask
+  task: TaskType
   deleteTask: (id: string) => void
   toggleTask: (id: string) => void
   editTask: (id: string, editedTitle: string) => void

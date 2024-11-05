@@ -1,27 +1,13 @@
-import { useEffect, useState } from 'react'
-import { TFilterStatus, TTask } from '../types'
+import { useState } from 'react'
+import { FilterStatus, Task } from '../types'
+import useLocalStorage from './useLocalStorage'
 
 const useTask = () => {
-  const [tasks, setTasks] = useState<TTask[]>([])
-  const [filterStatus, setFilterStatus] = useState<TFilterStatus>('all')
+  const [tasks, setTasks] = useLocalStorage<Task[]>('tasks', [])
+  const [filterStatus, setFilterStatus] = useState<FilterStatus>('all')
   const [searchTerm, setSearchTerm] = useState('')
 
-  // Загружаем задачи из localStorage при первой загрузке
-  useEffect(() => {
-    const storedTasks = localStorage.getItem('tasks')
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks))
-    }
-  }, [])
-
-  // Сохраняем задачи в localStorage при их изменении
-  useEffect(() => {
-    if (tasks.length) {
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-    }
-  }, [tasks])
-
-  const addTask = (task: TTask) => setTasks(prev => [...prev, task])
+  const addTask = (task: Task) => setTasks(prev => [...prev, task])
 
   const deleteTask = (id: string) => {
     setTasks(prev => prev.filter(task => task.id !== id))

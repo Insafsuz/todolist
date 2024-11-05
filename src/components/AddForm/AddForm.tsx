@@ -1,12 +1,12 @@
 import { FC, FormEvent, useState } from 'react'
-import { TTask } from '../../types'
+import { Task } from '../../types'
 import Button from '../ui/Button/Button'
 import Input from '../ui/Input/Input'
 import styles from './AddForm.module.scss'
 
 type AddFormProps = {
   setIsModalVisible: (active: boolean) => void
-  addTask: (task: TTask) => void
+  addTask: (task: Task) => void
 }
 
 const AddForm: FC<AddFormProps> = ({ setIsModalVisible, addTask }) => {

@@ -1,11 +1,11 @@
-import { ChangeEvent, useState } from 'react'
-import AddForm from './components/AddForm/AddForm'
+import { useState } from 'react'
+import FormModal from './components/FormModal/FormModal'
 import TaskList from './components/TaskList/TaskList'
 import Button from './components/ui/Button/Button'
 import Input from './components/ui/Input/Input'
-import Modal from './components/ui/Modal/Modal'
 import Select from './components/ui/Select/Select'
 import useTask from './hooks/useTask'
+import { FilterStatus } from './types'
 
 const App = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -21,13 +21,6 @@ const App = () => {
     setSearchTerm,
   } = useTask()
 
-  const handleFilterChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    if (value === 'all' || value === 'complete' || value === 'incomplete') {
-      setFilterStatus(value)
-    }
-  }
-
   return (
     <div className='container'>
       <h1 className='title'>Todo list</h1>
@@ -40,7 +33,7 @@ const App = () => {
               { value: 'incomplete', name: 'Incomplete' },
             ]}
             value={filterStatus}
-            onChange={handleFilterChange}
+            onChange={e => setFilterStatus(e.target.value as FilterStatus)}
           />
         </div>
         <div className='column'>
@@ -68,12 +61,11 @@ const App = () => {
         toggleTask={toggleTask}
         editTask={editTask}
       />
-      <Modal
+      <FormModal
+        addTask={addTask}
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-      >
-        <AddForm setIsModalVisible={setIsModalVisible} addTask={addTask} />
-      </Modal>
+      />
     </div>
   )
 }

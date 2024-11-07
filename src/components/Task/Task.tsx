@@ -15,13 +15,11 @@ type TaskProps = {
 }
 
 const Task: FC<TaskProps> = ({ task, deleteTask, toggleTask, editTask }) => {
-  const [isChecked, setIsChecked] = useState(task.checked)
   const [isEditing, setIsEditing] = useState(false)
   const [editedTitle, setEditedTitle] = useState(task.title)
 
   const toggleCheckbox = () => {
     toggleTask(task.id)
-    setIsChecked(!isChecked)
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -33,12 +31,18 @@ const Task: FC<TaskProps> = ({ task, deleteTask, toggleTask, editTask }) => {
   return (
     <li className={styles.task}>
       <div className={styles.wrapper}>
-        <Checkbox id={task.id} checked={isChecked} onChange={toggleCheckbox} />
+        <Checkbox
+          id={task.id}
+          checked={task.checked}
+          onChange={toggleCheckbox}
+        />
         {!isEditing ? (
           <>
             <label
               htmlFor={task.id}
-              className={`${styles.label} ${isChecked ? styles.checked : null}`}
+              className={`${styles.label} ${
+                task.checked ? styles.checked : null
+              }`}
             >
               {task.title}
             </label>

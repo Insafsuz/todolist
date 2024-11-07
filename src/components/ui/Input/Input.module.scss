@@ -7,14 +7,14 @@
     border-radius: 0.3125rem;
     padding: 0.3125rem 1.0625rem;
     font-size: 1.0625rem;
-    background-color: hsl(245 20% 4%);
-    caret-color: hsl(245 50% 50%);
-    color: #d7d7ea;
+    background-color: $checkbox-bg;
+    caret-color: $primary-color;
+    color: $text-color-light;
     transition: all 0.2s ease;
     &:focus,
     &:valid {
       outline: none;
-      box-shadow: 0 0 0 5px hsl(240 15% 10%), 0 0 0 10px hsl(245 50% 50% / 0.8);
+      box-shadow: 0 0 0 5px $background-dark, 0 0 0 10px #4a40bfcc;
     }
     &::placeholder {
       opacity: 0;
@@ -37,6 +37,6 @@
 .input:focus + .label,
 .input:valid + .label {
   transform: translateY(-3rem);
-  background-color: hsl(240 15% 10%);
-  color: hsl(245 50% 50% / 0.8);
+  background-color: $background-dark;
+  color: #4a40bfcc;
 }

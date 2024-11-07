@@ -5,11 +5,11 @@ import Input from '../ui/Input/Input'
 import styles from './AddForm.module.scss'
 
 type AddFormProps = {
-  setIsModalVisible: (active: boolean) => void
+  handleClick: () => void
   addTask: (task: Task) => void
 }
 
-const AddForm: FC<AddFormProps> = ({ setIsModalVisible, addTask }) => {
+const AddForm: FC<AddFormProps> = ({ handleClick, addTask }) => {
   const [title, setTitle] = useState('')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -21,7 +21,7 @@ const AddForm: FC<AddFormProps> = ({ setIsModalVisible, addTask }) => {
         checked: false,
         status: 'incomplete',
       })
-      setIsModalVisible(false)
+      handleClick()
     }
     setTitle('')
   }
@@ -37,11 +37,7 @@ const AddForm: FC<AddFormProps> = ({ setIsModalVisible, addTask }) => {
         onChange={e => setTitle(e.target.value)}
       />
       <div className={styles.wrapper}>
-        <Button
-          type='button'
-          variant='secondary'
-          onClick={() => setIsModalVisible(false)}
-        >
+        <Button type='button' variant='secondary' onClick={handleClick}>
           Cancel
         </Button>
         <Button type='submit' variant='primary'>

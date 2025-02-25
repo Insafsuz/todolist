@@ -1,0 +1,39 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3125rem;
+  transition: box-shadow 0.2s ease;
+  width: 8.8125rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 0.9375rem;
+  &.primary {
+    color: $text-color-light;
+    border: 1px solid $primary-color;
+    background-color: $primary-color;
+    transition: background-color 0.3s ease;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+    @media (hover: none) {
+      &:ismodalvisible {
+        background-color: $primary-hover;
+      }
+    }
+  }
+  &.secondary {
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    @include hover {
+      background-color: $primary-color;
+      color: $text-color-light;
+    }
+  }
+}

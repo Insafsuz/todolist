@@ -1,0 +1,15 @@
+.select {
+  outline: none;
+  cursor: pointer;
+  background-color: $select-bg;
+  border-radius: 0.3125rem;
+  color: $select-text;
+  height: 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0 0.9375rem 0 8px;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0px 0px 8px $select-bg;
+  }
+}

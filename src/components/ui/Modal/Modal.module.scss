@@ -1,0 +1,49 @@
+.modal {
+  width: 100%;
+  height: 100vh;
+  background-color: $modal-overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .content {
+    position: relative;
+    width: 31.25rem;
+    background-color: $background-dark;
+    border: 1px solid $checkbox-shadow;
+    border-radius: 0.625rem;
+    box-shadow: 0 -16px 40px #08080c, 0 1em 3em #4a40bf33;
+    padding: 1.5625rem 1.875rem;
+    margin: 0 1.25em;
+    @media (max-width: 550px) {
+      padding: 0.9375rem;
+      margin: 0 0.625rem;
+    }
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    background-color: $close-btn-bg;
+    box-shadow: 1px 1px 10px $close-btn-bg;
+    color: #fff;
+    border-radius: 0.3125rem;
+    border: 0;
+    padding-inline: 0;
+    cursor: pointer;
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    font-size: 1.25rem;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 1px 1px 15px $close-btn-bg;
+    }
+  }
+}

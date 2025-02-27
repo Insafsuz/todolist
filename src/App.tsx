@@ -1,65 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import AddForm from './components/AddForm/AddForm'
 import TaskList from './components/TaskList/TaskList'
 import Button from './components/ui/Button/Button'
 import Input from './components/ui/Input/Input'
 import Modal from './components/ui/Modal/Modal'
 import Select from './components/ui/Select/Select'
-import { FilterStatus, Task } from './types'
+import useTask from './hooks/useTask'
+import { FilterStatus } from './types'
 
 const App = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [tasks, setTasks] = useState<Task[]>([])
-  const [searchTerm, setSearchTerm] = useState('')
-  const [filterStatus, setFilterStatus] = useState<FilterStatus>('all')
-
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
-
-  const storedTasks = localStorage.getItem('tasks')
-
-  useEffect(() => {
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks))
-    }
-  }, [])
-
-  const addTask = (task: Task) => {
-    setTasks(prev => [...prev, task])
-  }
-
-  const deleteTask = (id: string) => {
-    setTasks(prev => prev.filter(task => task.id !== id))
-  }
-
-  const toggleTask = (id: string) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id
-          ? {
-              ...task,
-              checked: !task.checked,
-              status: task.checked ? 'incomplete' : 'complete',
-            }
-          : task
-      )
-    )
-  }
-
-  const editTask = (id: string, editedTitle: string) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id ? { ...task, title: editedTitle } : task
-      )
-    )
-  }
-
-  const filteredTasks = tasks
-    .filter(task =>
-      filterStatus === 'all' ? true : filterStatus === task.status
-    )
-    .filter(task => task.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  const {
+    tasks,
+    addTask,
+    deleteTask,
+    toggleTask,
+    editTask,
+    filterStatus,
+    setFilterStatus,
+    searchTerm,
+    setSearchTerm,
+  } = useTask()
 
   return (
     <div className='container'>
@@ -96,7 +57,7 @@ const App = () => {
         </div>
       </div>
       <TaskList
-        tasks={filteredTasks}
+        tasks={tasks}
         deleteTask={deleteTask}
         toggleTask={toggleTask}
         editTask={editTask}

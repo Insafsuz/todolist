@@ -1,0 +1,17 @@
+.form {
+  .title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 2.5rem;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3.75rem;
+  }
+  .button {
+    width: 6.25rem;
+  }
+}

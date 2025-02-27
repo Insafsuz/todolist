@@ -1,0 +1,127 @@
+.task {
+  width: 100%;
+  height: 3.75rem;
+  border-bottom: 1px solid $border-light;
+  display: flex;
+  align-items: center;
+  padding-left: 0.375rem;
+  gap: 1.25rem;
+  overflow-x: hidden;
+  position: relative;
+  .default {
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9375rem;
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    transform: translate(0, -50%);
+    background-color: $background-dark;
+    @media (min-width: 768px) {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    @media (max-width: 424px) {
+      right: 0;
+    }
+    button {
+      width: 1.375rem;
+      height: 1.5rem;
+    }
+    .action {
+      background-color: transparent;
+      border: 0;
+      transition: color 0.3s ease;
+      font-size: 1.125rem;
+      color: $text-color-light;
+      padding-inline: 0;
+      &:first-child {
+        @include hover {
+          color: $border-light;
+        }
+      }
+      &:last-child {
+        @include hover {
+          color: #e50000;
+        }
+      }
+    }
+  }
+  &:hover {
+    .default {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+  width: 100%;
+}
+
+.form {
+  flex: 0 1 100%;
+  display: flex;
+}
+
+.label {
+  user-select: none;
+  font-size: 1.125rem;
+  max-width: 27.8125rem;
+  cursor: pointer;
+  padding-right: 3.75rem;
+  &.checked {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}
+
+.input {
+  background-color: transparent;
+  outline: none;
+  font-size: 1.125rem;
+  color: inherit;
+  width: 100%;
+  margin-right: 3.75rem;
+  border: 0;
+  padding: 0;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+  position: absolute;
+  top: 50%;
+  right: 0.625rem;
+  transform: translate(0, -50%);
+  background-color: $background-dark;
+  @media (max-width: 424px) {
+    right: 0;
+  }
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 0;
+    padding-inline: 0;
+    transition: color 0.3s ease;
+    font-size: 1.375rem;
+    &:first-child {
+      color: $border-light;
+    }
+    &:last-child {
+      color: #e50000;
+    }
+  }
+  button {
+    width: 1.375rem;
+    height: 1.5rem;
+  }
+}
